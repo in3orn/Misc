@@ -16,7 +16,13 @@ GameWindow {
     MenuScene {
         id: menuScene
 
+        onSimpleLoaderClicked: gameWindow.state = "simpleLoaderScene"
         onSimpleProgressBarClicked: gameWindow.state = "simpleProgressBarScene"
+    }
+
+    SimpleLoaderScene {
+        id: simpleLoaderScene
+        onBackButtonPressed: gameWindow.state = "menuScene"
     }
 
     SimpleProgressBarScene {
@@ -62,6 +68,12 @@ GameWindow {
             name: "menuScene"
             PropertyChanges { target: menuScene; state: "shown" }
             PropertyChanges { target: gameWindow; activeScene: menuScene }
+        },
+        State {
+            name: "simpleLoaderScene"
+            PropertyChanges { target: recorder; name: "SimpleLoader"; interval: 100; maxNumber: 12 }
+            PropertyChanges { target: simpleLoaderScene; state: "shown" }
+            PropertyChanges { target: gameWindow; activeScene: simpleLoaderScene }
         },
         State {
             name: "simpleProgressBarScene"

@@ -8,6 +8,7 @@ KrkScene {
 
     readonly property int normalFontSize: 18
 
+    signal simpleLoaderClicked()
     signal simpleProgressBarClicked()
 
     ScrollViewVPlay {
@@ -24,16 +25,17 @@ KrkScene {
             spacing: dp(10)
             width: scrollView.width //parent not working
 
-            Repeater {
-                model: 20
-                ButtonVPlay {
-                    text: qsTr("Simple progress bar")
-                    onClicked: simpleProgressBarClicked()
-                    Layout.alignment: Qt.AlignHCenter
-                }
+            ButtonVPlay {
+                text: qsTr("Simple loader")
+                onClicked: simpleLoaderClicked()
+                Layout.alignment: Qt.AlignHCenter
             }
 
-
+            ButtonVPlay {
+                text: qsTr("Simple progress bar")
+                onClicked: simpleProgressBarClicked()
+                Layout.alignment: Qt.AlignHCenter
+            }
         }
     }
 }
